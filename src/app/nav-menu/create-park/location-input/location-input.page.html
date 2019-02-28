@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/home"></ion-back-button>
+		</ion-buttons>
+    <ion-title>Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+	<input type="textarea" placeholder="search for location" [(ngModel)]="carpark.address" autocorrect="off" autocapitalize="off"
+		spellcheck="off"  class="form-control" #search [formControl]="searchControl"
+		autofocus required>
+	<ion-label class="address-example">e.g. 1 Sesame St, CBD</ion-label>
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+	<ng-container *ngIf="carpark.address; then validIcon else invalidIcon"></ng-container>
+		<ion-buttons slot="end" style="display: inline-flex;" color="primary">
+			<ion-label color="primary">Next</ion-label>
+			<ion-icon text="Next" name="arrow-round-forward" style="font-size: 2.25rem;" color="primary" routerLink="location-refine"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
+
+
+<ng-template #validIcon>
+	<ion-icon slot="start" style="font-size: 2.25rem; color: limegreen" name="checkmark-circle"></ion-icon>
+</ng-template>
+
+<ng-template #invalidIcon>
+	<ion-icon slot="start" style="font-size: 2.25rem; color: lightgrey" name="alert"></ion-icon>
+</ng-template>

@@ -1,0 +1,38 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Bays</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="prompt">How many bays will be avaiable?</div>
+	<img class="logoBays" src="/assets/carpark-bays.jpg">
+
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ng-container *ngIf="carparkService.carpark.bays; then validIcon else invalidIcon"></ng-container>
+		<div class="bays-zone">
+			<ion-label color="medium" class="bays-label">Number of bays</ion-label>
+			<ion-input type="number" pattern="[0-9]*" [(ngModel)]="carparkService.carpark.bays" name="bays" placeholder="Number of bays" autofocus required></ion-input>
+		</div>
+		<ion-buttons slot="end" (click)="nav.back()">
+			<ion-label color="primary">Next</ion-label>
+			<ion-icon class="next-icon" color="primary" name="arrow-round-forward"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
+
+
+<ng-template #validIcon>
+	<ion-icon slot="start" class="valid-icon" name="logo-usd"></ion-icon>
+</ng-template>
+
+<ng-template #invalidIcon>
+	<ion-icon slot="start" class="invalid-icon" name="alert"></ion-icon>
+</ng-template>
+

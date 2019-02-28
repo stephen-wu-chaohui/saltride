@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Refine Location</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<div #map class="map"></div>
+</ion-content>
+
+
+<ion-footer>
+		<ion-toolbar>
+		<ng-container *ngIf="carpark.address; then validIcon else invalidIcon"></ng-container>
+			<ion-buttons slot="end" style="display: inline-flex;" color="primary">
+				<ion-label color="primary">Next</ion-label>
+				<ion-icon text="Next" name="arrow-round-forward" style="font-size: 2.25rem;" color="primary" (click)="nav.back(); nav.back();"></ion-icon>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-footer>
+
+
+	<ng-template #validIcon>
+		<ion-icon slot="start" style="font-size: 2.25rem; color: limegreen" name="checkmark-circle"></ion-icon>
+	</ng-template>
+
+	<ng-template #invalidIcon>
+		<ion-icon slot="start" style="font-size: 2.25rem; color: lightgrey" name="alert"></ion-icon>
+	</ng-template>

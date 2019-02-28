@@ -1,0 +1,52 @@
+
+ion-content {
+	--background: #233151;
+}
+
+.prompt {
+	color: whitesmoke;
+	text-align: center;
+	padding: 30px;
+}
+
+.logoBays {
+	width: 100%;
+	max-width: 600px;
+}
+
+.bays-zone {
+	display: flex;
+	flex-direction: column;
+}
+
+.bays-label {
+	font-size: 0.9rem;
+}
+
+.bays-value {
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+.next-buttons {
+	display: inline-flex;
+}
+
+.next-icon {
+	font-size: 2.25rem;
+}
+
+.valid-icon {
+	font-size: 1.5rem;
+	background-color: limegreen;
+	color: white;
+	margin: 0 10px;
+	padding: 5px;
+	border-radius: 50%;
+}
+
+.invalid-icon {
+	font-size: 2.25rem;
+	color: lightgrey;
+	margin: 0 10px;
+}

@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Price per hour</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+		<div class="prompt">Select price per hour</div>
+
+		<div class="price-list">
+			<ion-fab-button *ngFor="let price of prices" (click)="onClick(price)"
+				class="round" [color]="carparkService.carpark.hourlyPrice == price? 'secondary' : 'primary'">
+				${{price}}
+			</ion-fab-button>
+		</div>
+
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ng-container *ngIf="carparkService.carpark.hourlyPrice; then validIcon else invalidIcon"></ng-container>
+		<div *ngIf="carparkService.carpark.hourlyPrice" class="price-zone">
+			<ion-label color="medium" class="price-label">Price per hour</ion-label>
+			<ion-label color="dark" class="price-value">{{dollars(carparkService.carpark.hourlyPrice)}}</ion-label>
+		</div>
+		<ion-buttons slot="end" (click)="nav.back()">
+			<ion-label color="primary">Next</ion-label>
+			<ion-icon class="next-icon" color="primary" name="arrow-round-forward"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
+
+
+<ng-template #validIcon>
+	<ion-icon slot="start" class="valid-icon" name="logo-usd"></ion-icon>
+</ng-template>
+
+<ng-template #invalidIcon>
+	<ion-icon slot="start" class="invalid-icon" name="alert"></ion-icon>
+</ng-template>

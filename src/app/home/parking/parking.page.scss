@@ -1,0 +1,316 @@
+ion-card-title {
+	font-size: 18px;
+}
+
+
+.background {
+	background-image: url(~/assets/parking.jpg);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: contain;
+}
+
+.day {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2px 40px;
+
+	.name { flex: 1; }
+	.range { flex: 3; }
+}
+
+.parking-page {
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+
+
+.page {
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.light {
+	background-color: Gainsboro;
+}
+
+.dark {
+	background-color: #0C293F;
+}
+
+.float {
+	padding: 40px 20px;
+	margin: 20px auto;
+}
+
+.line {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+
+	.left {
+		flex: 1;
+		text-align: left;
+	}
+
+	.blue {
+		color: dodgerblue;
+	}
+
+	.middle {
+		flex: 8;
+	}
+
+	.right {
+		flex: 1;
+		text-align: right;
+		color: dodgerblue;
+	}
+}
+
+.spring {
+	flex-grow: 1;
+}
+
+.topbar {
+	background-color: whitesmoke;
+}
+
+.multi-line {
+	display: flex;
+	flex-direction: column;
+	.label {
+		color: gray;
+		font-size: 0.9rem;
+	}
+}
+
+.plate-number {
+	margin: 2px;
+	padding: 4px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+.block {
+	margin: 5px 10px;
+	box-shadow: 1px 1px rgb(155, 147, 147);
+	background-color: whitesmoke;
+}
+
+.block-noshadow {
+	margin: 5px 10px;
+}
+
+.caption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: start;
+	padding: 6px 12px;
+
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.text {
+	padding: 6px 12px;
+}
+
+.icon {
+	color:dodgerblue;
+	background-color: whitesmoke;
+	border-radius: 50%;
+	margin-right: 10px;
+	padding: 3px;
+}
+
+.reverse-icon {
+	color:whitesmoke;
+	background-color: dodgerblue;
+	border-radius: 50%;
+	padding: 3px;
+}
+
+.green-icon {
+	color:whitesmoke;
+	background-color: limegreen;
+	border-radius: 50%;
+	padding: 3px;
+}
+
+.disabled-icon {
+	color:whitesmoke;
+	background-color: lightgray;
+	border-radius: 50%;
+	margin-right: 10px;
+	padding: 3px;
+	width: 32px;
+	height: 32px;
+}
+
+.border-top {
+	border-top: 1px solid lightgrey;
+}
+
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	// margin: 3px 8px;
+	color: whitesmoke;
+}
+
+.inline-button {
+	width: 100%;
+	margin: 5px auto;
+	text-align: center;
+	font-weight: bolder;
+	padding: 15px;
+	border-radius: 3px;
+}
+
+.round-button {
+	flex: 1;
+	text-align:center;
+	color: dodgerblue;
+	padding: 5px;
+	margin: 10px;
+	border: 1px solid dodgerblue;
+	border-radius: 20px;
+}
+
+
+.disabled {
+	background-color: lightgray;
+}
+
+.enabled {
+	background-color: dodgerblue;
+}
+
+.reversed {
+	background-color: whitesmoke;
+	color: dodgerblue;
+}
+
+.light-text {
+	color: whitesmoke;
+}
+
+.dark-text {
+	color: black;
+}
+
+
+.start {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.top-left {
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+agm-map {
+	height: 100%;
+}
+
+.centered-bottom {
+	position: absolute;
+	bottom: 10px;
+	left: 40%;
+	width: 20%;
+	border-radius: 50%;
+}
+
+.top-middle {
+	position: absolute;
+	top: 10px;
+	left: 70px;
+	padding: 9px;
+}
+
+.top-right {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 9px;
+}
+
+.primary-icon {
+	color: dodgerblue;
+	background-color: whitesmoke ;
+	border-radius: 50%;
+	font-size: 24px;
+	padding: 5px;
+}
+
+.card-icon {
+	color: white;
+	background-color: dodgerblue ;
+	border-radius: 50%;
+	font-size: 18px;
+	padding: 4px;
+}
+
+
+
+.top-left {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.parking-note {
+	font: outline;
+	color: red;
+	background-color: transparent;
+	border: 1px solid red;
+	margin: auto;
+	display: inline-block;
+}
+
+
+ion-card-title {
+	font-size: 15px;
+}
+
+ion-item {
+	--background: rgb(253, 218, 223);
+	font-size: 15px;
+}
+
+.block {
+  display: block;
+	width: 95%;
+	text-align: center;
+	font-weight: bold;
+	margin: 20px;
+}
+
