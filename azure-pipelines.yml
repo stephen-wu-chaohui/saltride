@@ -17,6 +17,9 @@ steps:
 
 - script: |
     npm install -g @angular/cli
-    npm install
-    ng build --prod
+    npm install -g ionic
+    npm install -g firebase-tools
+    ng build
+    firebase deploy --project ionsaltride --token 1/mNvls0y8JC8QCvotSVkjTK1GPI3dBGzMpGYlnQSDp0o
+
   displayName: 'npm install and build'
