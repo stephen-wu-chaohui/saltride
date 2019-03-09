@@ -45,7 +45,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.accountService.loadCurrentUser().subscribe(v => {
       if (!this.accountService.currentUser) {
-        this.nav.navigateRoot('/account');
+        this.nav.navigateRoot('/account/welcome');
       }
     });
   }
