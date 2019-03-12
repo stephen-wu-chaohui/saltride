@@ -25,9 +25,9 @@
 					</ion-buttons>
 				</ion-item>
 
-				<ion-item text-wrap *ngIf="expanding">
-					<ion-label color="primary">{{cellGroup?.parkingInstructions}}</ion-label>
-				</ion-item>
+				<div padding text-wrap *ngIf="expanding">
+					<ion-text padding strong color="dark">{{cellGroup?.parkingInstructions}}</ion-text>
+				</div>
 
 				<ion-button strong color="primary" expand="block" fill="solid" (click)="joinGroup()">
 						<ion-ripple-effect></ion-ripple-effect>
