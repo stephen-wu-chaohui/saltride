@@ -12,6 +12,9 @@ export class AccountSettingsPage implements OnInit {
   constructor(public accountService: AccountService, private nav: NavController) { }
 
   ngOnInit() {
+    if (!this.accountService.currentUser || !this.accountService.currentUser.firstName) {
+      this.nav.navigateRoot('/account/welcome');
+    }
   }
 
   logout() {

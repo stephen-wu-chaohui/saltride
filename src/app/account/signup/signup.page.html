@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-	<form (submit)="onSubmit()">
 		<div class="formControl" [ngStyle]="emailErrors && {'color': 'red'}">
 			<ion-input type="email" [(ngModel)]="account.email"	name="email" placeholder="Email" (focus)="clearErrors()" autofocus required></ion-input>
 			<div *ngIf="emailErrors" class="error">{{emailErrors}}</div>
@@ -24,10 +23,9 @@
 		<br>
 		<br>
 		<br>
-		<ion-button type="submit" size="large" [disabled]="!account.email" color="primary" expand="block" fill="solid">
+		<ion-button size="large" [disabled]="!account.email" color="primary" expand="block" fill="solid" (click)="onSubmit()">
 			<strong>Next</strong>
 		</ion-button>
-	</form>
 
 	<div>Already a member?</div>
 	<ion-button color="primary" expand="block" fill="clear" (click)="nav.navigateRoot('/account/login')">

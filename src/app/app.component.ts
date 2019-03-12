@@ -6,30 +6,32 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
   menuGroups = [{
-    label: 'Settings:',
+    label: 'Involving',
     menuItems: [{
-      label: 'Account settings',
+      label: 'My Profile',
       url: '/account-settings',
       icon: 'flask'
     }, {
-      label: 'Map filter',
-      url: '/map-filter',
+      label: 'My subscriptions',
+      url: '/my-subscriptions',
       disabled: true,
       icon: 'wifi'
     }]
   }, {
-    label: 'Parking:',
+    label: 'About Church',
     menuItems: [{
-      label: 'Parking history',
-      url: '/parking-history',
+      label: 'Info',
+      url: '/info',
+      disabled: true,
       icon: 'paper-plane'
     }, {
-      label: 'My subscriptions',
-      url: '/my-subscriptions',
+      label: 'Sermons',
+      url: '/sermons',
       disabled: true,
       icon: 'boat'
     }, {
@@ -37,21 +39,17 @@ export class AppComponent {
       url: '/messages',
       disabled: true,
       icon: 'bluetooth'
-    }, {
-      label: 'Voucher codes',
-      url: '/vocher-codes',
-      disabled: true,
-      icon: 'football'
     }]
   }, {
-    label: 'Hosting:',
+    label: 'Cell groups',
     menuItems: [{
-      label: 'My hosted parks',
-      url: '/my-hosted-parks',
+      label: 'Our family',
+      url: '/our-family',
+      disabled: true,
       icon: 'beer'
     }, {
-      label: 'Create park',
-      url: '/create-park',
+      label: 'Create group',
+      url: '/create-group',
       icon: 'build'
     }]
   }];

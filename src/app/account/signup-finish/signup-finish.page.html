@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-	<form (submit)="onSubmit()">
 		<div class="formControl" [ngStyle]="firstNameErrors && {'color': 'red'}">
 			<ion-input type="text" [(ngModel)]="account.firstName"	name="firstName" placeholder="First name" (focus)="clearErrors()" autofocus required></ion-input>
 			<div *ngIf="firstNameErrors" class="error">{{firstNameErrors}}</div>
@@ -24,9 +23,8 @@
 		<br>
 		<br>
 		<br>
-		<ion-button type="submit" size="large" [disabled]="!account.firstName" color="primary" expand="block" fill="solid">
+		<ion-button type="submit" size="large" [disabled]="!account.firstName" color="primary" expand="block" fill="solid" (click)="onSubmit()">
 			<strong>Sign up</strong>
 		</ion-button>
-	</form>
 
 </ion-content>

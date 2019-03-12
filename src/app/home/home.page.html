@@ -3,21 +3,21 @@
 					 [longitude]="locationService.currentLocation.longitude"
 	></app-map>
 
-	<app-marker *ngFor="let c of parkableService.carParks.data" [map]="map.map" [carpark]="c"
-	></app-marker>
+	<app-cell-marker color='blue' *ngFor="let c of church.cellGroups.data" [map]="map.map" [cellGroup]="c"
+	></app-cell-marker>
 
-<ion-fab vertical="top" horizontal="start" slot="fixed">
-	<ion-fab-button color="danger">
-		<ion-icon name="alarm"></ion-icon>
-	</ion-fab-button>
-</ion-fab>
-<ion-fab vertical="top" horizontal="end" slot="fixed">
-	<ion-menu-button color="tertiary"></ion-menu-button>
-</ion-fab>
-<ion-fab vertical="bottom" horizontal="center" slot="fixed">
-	<ion-fab-button color="tertiary" (click)="nav.navigateForward('/home/help')">
-	  <ion-icon name="contacts"></ion-icon>
-	</ion-fab-button>
-</ion-fab>
+	<app-church-marker [map]="map.map" [church]="church.church"></app-church-marker>
+
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button size="small" color="light">
+			<ion-menu-button color="tertiary"></ion-menu-button>
+		</ion-fab-button>
+	</ion-fab>
+
+	<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+		<ion-fab-button color="tertiary" (click)="nav.navigateForward('/home/help')">
+			<ion-icon name="locate"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
 
 </ion-content>

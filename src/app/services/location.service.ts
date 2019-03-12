@@ -10,8 +10,8 @@ export class Coordinate {
 })
 export class LocationService {
   currentLocation: Coordinate = {
-    latitude: -43.536829,
-    longitude: 172.6380809
+    latitude: -43.549917,
+    longitude: 172.562886
   };
 
   private intervalId = null;

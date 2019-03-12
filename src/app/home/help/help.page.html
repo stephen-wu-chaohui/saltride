@@ -1,33 +1,28 @@
+<ion-content color="tertiary">
+	<div padding>
+		<p color="light">welcome to</p>
+		<h3 strong>Abundant Life Church</h3>
+	</div>
 
+	<ion-img src='/assets/church.jpg'></ion-img>
+	<div style="padding: 10px 10px 0 70px;">
+		<p *ngFor="let line of churchService.church.missionStatement">{{line}}</p>
+	</div>
+</ion-content>
 
-<ion-content color="dark">
-		<div padding>
-			<p color="light">parkable</p>
-			<h3 color="primary">Find casual park</h3>
-			<h3 color="primary">Find longterm park</h3>
-		</div>
+<ion-tab-bar slot="bottom" color="light">
+	<ion-tab-button tab="profile" (click)="nav.navigateForward('/account-settings')">
+			<ion-icon color="primary" name="person-add"></ion-icon>
+			<ion-label>Join</ion-label>
+	</ion-tab-button>
 
-		<div padding>
-			<hr>
-			<hr>
-			<hr>
-		</div>
-	</ion-content>
+	<ion-tab-button tab="sermons" (click)="nav.navigateForward('/sermons')">
+			<ion-icon color="primary" name="people"></ion-icon>
+			<ion-label>Semons</ion-label>
+	</ion-tab-button>
 
-  <ion-tab-bar slot="bottom" color="dark">
-		<ion-tab-button tab="schedule" (click)="nav.back()">
-				<ion-icon name="search"></ion-icon>
-				<ion-label>Search</ion-label>
-		</ion-tab-button>
-
-		<ion-tab-button tab="speakers" (click)="nav.back()">
-				<ion-icon name="locate"></ion-icon>
-				<ion-label>Centre map</ion-label>
-		</ion-tab-button>
-
-		<ion-tab-button tab="map" (click)="nav.back()">
-				<ion-icon name="close-circle-outline"></ion-icon>
-				<ion-label>Back</ion-label>
-		</ion-tab-button>
-
-	</ion-tab-bar>
+	<ion-tab-button tab="map" (click)="nav.navigateRoot('/home')">
+			<ion-icon color="primary" name="search"></ion-icon>
+			<ion-label>Map</ion-label>
+	</ion-tab-button>
+</ion-tab-bar>

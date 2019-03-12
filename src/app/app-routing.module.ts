@@ -7,15 +7,16 @@ const routes: Routes = [
   { path: 'account', loadChildren: './account/welcome.module#WelcomePageModule' },
   { path: 'account-settings', loadChildren: './nav-menu/account-settings/account-settings.module#AccountSettingsPageModule' },
   { path: 'map-filter', loadChildren: './nav-menu/map-filter/map-filter.module#MapFilterPageModule' },
-  { path: 'parking-history', loadChildren: './nav-menu/parking-history/parking-history.module#ParkingHistoryPageModule' },
   { path: 'my-subscriptions', loadChildren: './nav-menu/my-subscriptions/my-subscriptions.module#MySubscriptionsPageModule' },
   { path: 'messages', loadChildren: './nav-menu/messages/messages.module#MessagesPageModule' },
-  { path: 'vocher-codes', loadChildren: './nav-menu/vocher-codes/vocher-codes.module#VocherCodesPageModule' },
-  { path: 'my-hosted-parks', loadChildren: './nav-menu/my-hosted-parks/my-hosted-parks.module#MyHostedParksPageModule' },
-  { path: 'create-park', loadChildren: './nav-menu/create-park/create-park.module#CreateParkPageModule' },
-  { path: 'confirm-parking', loadChildren: './home/parking/confirm-parking/confirm-parking.module#ConfirmParkingPageModule' },
-  { path: 'confirm-reservation', loadChildren: './home/parking/confirm-reservation/confirm-reservation.module#ConfirmReservationPageModule' },
-  { path: 'pricing-model', loadChildren: './home/parking/pricing-model/pricing-model.module#PricingModelPageModule' },
+  { path: 'my-profile', loadChildren: './nav-menu/my-profile/my-profile.module#MyProfilePageModule' },
+  { path: 'info', loadChildren: './nav-menu/info/info.module#InfoPageModule' },
+  { path: 'sermons', loadChildren: './nav-menu/sermons/sermons.module#SermonsPageModule' },
+  { path: 'our-family', loadChildren: './nav-menu/our-family/our-family.module#OurFamilyPageModule' },
+  { path: 'create-group', loadChildren: './nav-menu/create-group/create-group.module#CreateGroupPageModule' },
+  { path: 'capacity', loadChildren: './nav-menu/create-group/capacity/capacity.module#CapacityPageModule' },
+  { path: 'photos', loadChildren: './nav-menu/create-group/photos/photos.module#PhotosPageModule' },
+  { path: 'vision-statement', loadChildren: './nav-menu/create-group/vision-statement/vision-statement.module#VisionStatementPageModule' },
 ];
 
 @NgModule({

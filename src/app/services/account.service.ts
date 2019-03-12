@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 
-import { Observable, of, forkJoin, concat, from } from 'rxjs';
-import { map, catchError, flatMap, mergeMap,  } from 'rxjs/operators';
+import { Observable, of, from } from 'rxjs';
+import { map, catchError, flatMap } from 'rxjs/operators';
 
 import { AppDataService } from './app-data.service';
-import { Parkable } from './parkable.service';
+import { Church } from './church.service';
 
 export class Account {
   id?: number;
@@ -34,7 +34,7 @@ export class AccountService {
   private serviceEndPoint = '';
 
   constructor(private appConfig: AppDataService, private httpClient: HttpClient,
-    private parkableService: Parkable.Service, private storage: Storage) {
+    private church: Church.Service, private storage: Storage) {
     this.serviceEndPoint = `${this.appConfig.apiURL}/Accounts`;
   }
 
@@ -61,8 +61,6 @@ export class AccountService {
 
   set currentUser(account: Account) {
     this.currentAccount = account;
-    this.parkableService.carParks.start();
-    this.parkableService.parkings.start();
   }
 
   clearSaving() {
@@ -124,7 +122,7 @@ export class AccountService {
     };
 
     return this.httpClient.put<Account>(`${this.serviceEndPoint}/${this.currentUser.id}`, this.currentUser, httpOptions).pipe(
-      map(user => {
+      map(() => {
           return 'OK';
         },
         catchError(error => error.toString())

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/home"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Create cell group</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-item lines="none" (click)="nav.navigateForward('/create-group/location-input')">
+		<ng-container *ngIf="cellGroup?.address; then validIcon else invalidIcon"></ng-container>
+		<div>
+			<ion-note color="medium" style="font-size: 0.9rem;">Location</ion-note>
+			<ion-label *ngIf="cellGroup?.address" color="dark" style="font-size: 0.9rem;"> {{cellGroup?.address}}</ion-label>
+		</div>
+		<ion-icon slot="end" style="font-size: 2rem;" color="primary" name="arrow-forward"></ion-icon>
+	</ion-item>
+
+	<ion-item lines="none" (click)="nav.navigateForward('/create-group/capacity')">
+		<ng-container *ngIf="cellGroup?.bays; then validIcon else invalidIcon"></ng-container>
+		<div>
+			<ion-label color="medium" style="font-size: 0.9rem;">Capacity</ion-label>
+			<ion-label *ngIf="cellGroup?.bays" color="dark" style="font-size: 0.9rem;"> {{cellGroup?.bays}}</ion-label>
+		</div>
+		<ion-icon slot="end" style="font-size: 2rem;" color="primary" name="arrow-forward"></ion-icon>
+	</ion-item>
+
+	<ion-item lines="none" (click)="nav.navigateForward('/create-group/photos')">
+		<ng-container *ngIf="cellGroup?.photoIds; then validIcon else invalidIcon"></ng-container>
+		<div>
+			<ion-label color="medium" style="font-size: 0.9rem;">Photos</ion-label>
+			<ion-label *ngIf="cellGroup?.photoIds" color="dark" style="font-size: 0.9rem; border: 1px solid grey;">{{cellGroup.photoIds.length}}</ion-label>
+		</div>
+		<ion-icon slot="end" style="font-size: 2rem;" color="primary" name="arrow-forward"></ion-icon>
+	</ion-item>
+
+	<ion-item lines="none" (click)="nav.navigateForward('/create-group/vision-statement')">
+		<ng-container *ngIf="cellGroup?.parkingInstructions; then validIcon else invalidIcon"></ng-container>
+		<div>
+			<ion-label color="medium" style="font-size: 0.9rem;">Vision Statement</ion-label>
+			<ion-label *ngIf="cellGroup?.parkingInstructions" color="dark" style="font-size: 0.9rem; border: 1px solid grey;">{{cellGroup.parkingInstructions}}</ion-label>
+		</div>
+		<ion-icon slot="end" style="font-size: 2rem;" color="primary" name="arrow-forward"></ion-icon>
+	</ion-item>
+
+	<ion-button style="width: 100%; padding:10px; height: 4.5rem;" [disabled]="!dataReady" (click)="createCellGroup()">Create cell group</ion-button>
+
+</ion-content>
+
+
+
+
+<ng-template #validIcon>
+	<ion-icon slot="start" style="font-size: 2.25rem; color: limegreen" name="checkmark-circle"></ion-icon>
+</ng-template>
+
+<ng-template #invalidIcon>
+	<ion-icon slot="start" style="font-size: 2.25rem; color: lightgrey" name="alert"></ion-icon>
+</ng-template>

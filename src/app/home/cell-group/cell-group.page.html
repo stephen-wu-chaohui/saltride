@@ -1,0 +1,63 @@
+
+<ion-header no-padding>
+		<ion-fab vertical="top" horizontal="start" slot="fixed">
+			<ion-fab-button size="small" color="light" (click)="modalController.dismiss()">
+				<ion-icon color="primary" name="arrow-back"></ion-icon>
+			</ion-fab-button>
+		</ion-fab>
+		<ion-title vertical="top" slot="secondary" color="light">{{cellGroup?.name || 'New Cell group'}}</ion-title>
+</ion-header>
+
+<ion-content>
+	<ion-img src='/assets/cell-group.png'></ion-img>
+
+	<ion-card color="light" style="border-radius: 0; top: -60px;"  no-padding>
+			<ion-card-content no-padding>
+				<ion-item>
+					<ion-icon color="primary" name="contacts" ></ion-icon>
+					<ion-label style="font-weight: bold">Your are welcome</ion-label>
+				</ion-item>
+
+				<ion-item color="warning" (click)="expanding = !expanding" text-wrap>
+					<ion-label color="danger"><span style="font-weight: bold">OPEN:</span> <span>20:00-21:00 per Thursday</span></ion-label>
+					<ion-buttons slot="end">
+						<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
+					</ion-buttons>
+				</ion-item>
+
+				<ion-item text-wrap *ngIf="expanding">
+					<ion-label color="primary">{{cellGroup?.parkingInstructions}}</ion-label>
+				</ion-item>
+
+				<ion-button strong color="primary" expand="block" fill="solid" (click)="joinGroup()">
+						<ion-ripple-effect></ion-ripple-effect>
+						<ion-icon name="add-circle" color="success"></ion-icon>Join this group
+				</ion-button>
+				<ion-button strong expand="block" fill="clear" (click)="playVideo()">
+						<ion-ripple-effect></ion-ripple-effect>
+						<ion-icon name="play-circle" color="primary"></ion-icon> Get more info
+				</ion-button>
+			</ion-card-content>
+		</ion-card>
+</ion-content>
+
+
+<ion-footer>
+  <ion-card>
+		<ion-toolbar>
+			<ion-buttons slot="start">
+				<ion-fab-button size="small" color="success"><ion-icon name="pin"></ion-icon></ion-fab-button>
+			</ion-buttons>
+
+			<ion-text label="Location" color="dark">
+				{{cellGroup?.address}}
+			</ion-text>
+
+			<ion-buttons slot="end">
+				<ion-button (click)="modalController.dismiss()">
+					<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+  </ion-card>
+</ion-footer>
