@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Church } from 'src/app/services/church.service';
+import { Salt } from 'src/app/services/salt.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ChurchMarkerComponent implements OnInit {
   @Input() map: google.maps.Map;
-  @Input() church: Church.Church;
+  @Input() church: Salt.Church;
   @Input() color = 'purple';
   @Input() scale = 15;
   @Input() fillOpacity = 0.75;

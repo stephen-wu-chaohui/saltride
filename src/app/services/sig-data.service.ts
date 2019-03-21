@@ -1,4 +1,4 @@
-import { Injectable, NgZone, EventEmitter } from '@angular/core';
+import { NgZone, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 
@@ -6,9 +6,10 @@ import { AppDataService } from './app-data.service';
 import { PushingService } from './pushing.service';
 
 export interface SigData {
-  id?: string;
+  id?: number;
   lastUpdated: number;	// unix time
   deleted: boolean;
+  keywords: string;
 }
 
 export class SigDataService<T extends SigData> {
@@ -84,11 +85,10 @@ export class SigDataService<T extends SigData> {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    if (data.id && data.id.length > 0) {
+    if (data.id) {
       this.httpClient.put<T>(`${this.serviceEndPoint}/${data.id}`, data, httpOptions)
         .subscribe(callback);
     } else {
-      data.id = null;
       this.httpClient.post<T>(this.serviceEndPoint, data, httpOptions)
         .subscribe(resp => {
           data.id = resp.id;
@@ -97,7 +97,7 @@ export class SigDataService<T extends SigData> {
     }
   }
 
-  delete(dataId: string) {
+  delete(dataId: number) {
     this.httpClient.delete(`${this.serviceEndPoint}/${dataId}`)
       .subscribe();
   }

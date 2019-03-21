@@ -15,10 +15,10 @@
 
 <ion-footer>
 	<ion-toolbar>
-		<ng-container *ngIf="creating.cellGroup.bays; then validIcon else invalidIcon"></ng-container>
-		<div class="bays-zone">
-			<ion-label color="medium" class="bays-label">Number of people</ion-label>
-			<ion-input type="number" pattern="[0-9]*" [(ngModel)]="creating.cellGroup.bays" name="bays" placeholder="Number of people" autofocus required></ion-input>
+		<ng-container *ngIf="creating.cellGroup.capacity; then validIcon else invalidIcon"></ng-container>
+		<div class="capacity-zone">
+			<ion-label color="medium" class="capacity-label">Number of people</ion-label>
+			<ion-input type="number" pattern="[0-9]*" [(ngModel)]="creating.cellGroup.capacity" name="capacity" placeholder="Number of people" autofocus required></ion-input>
 		</div>
 		<ion-buttons slot="end" (click)="nav.back()">
 			<ion-label color="primary">Next</ion-label>

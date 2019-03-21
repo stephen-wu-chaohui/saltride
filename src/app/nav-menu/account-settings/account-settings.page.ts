@@ -12,13 +12,13 @@ export class AccountSettingsPage implements OnInit {
   constructor(public accountService: AccountService, private nav: NavController) { }
 
   ngOnInit() {
-    if (!this.accountService.currentUser || !this.accountService.currentUser.firstName) {
+    if (!this.accountService.currentUser) {
       this.nav.navigateRoot('/account/welcome');
     }
   }
 
   logout() {
+    this.accountService.logOut();
     this.nav.navigateRoot('/account/welcome');
-    this.accountService.logout();
   }
 }

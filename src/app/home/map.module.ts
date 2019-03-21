@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
+import { MapPage } from './map.page';
 import { MapComponent } from './map/map.component';
 import { HelpPage } from './help/help.page';
 import { CellMarkerComponent } from './cell-marker/cell-marker.component';
@@ -19,12 +19,12 @@ import { ChurchMarkerComponent } from './church-marker/church-marker.component';
     FormsModule,
     IonicModule,
     RouterModule.forChild([
-      { path: '', component: HomePage },
+      { path: '', component: MapPage },
       { path: 'help', component: HelpPage },
     ]),
   ],
   declarations: [
-    HomePage,
+    MapPage,
     HelpPage,
     MapComponent,
     CellMarkerComponent,
@@ -37,4 +37,4 @@ import { ChurchMarkerComponent } from './church-marker/church-marker.component';
     JoinGroupComponent,
   ]
 })
-export class HomePageModule {}
+export class MapPageModule {}

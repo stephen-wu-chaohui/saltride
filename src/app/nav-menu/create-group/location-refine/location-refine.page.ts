@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Creating } from 'src/app/services/creating.service';
 import { NavController } from '@ionic/angular';
-import { Church } from 'src/app/services/church.service';
+import { Salt } from 'src/app/services/salt.service';
 
 @Component({
   selector: 'app-location-refine',
@@ -10,19 +10,17 @@ import { Church } from 'src/app/services/church.service';
 })
 export class LocationRefinePage implements OnInit {
   @ViewChild('map') mapElement;
-	map: google.maps.Map;
-	carpark: Church.CellGroup;
+  map: google.maps.Map;
 
-  constructor(public carparkService: Creating, public nav: NavController) {
-		this.carpark = carparkService.cellGroup;
-	}
+  constructor(public creating: Creating, public nav: NavController) {
+  }
 
   ngOnInit() {
     this.initMap();
   }
 
   initMap() {
-    const coords = new google.maps.LatLng(this.carparkService.cellGroup.lantitute, this.carparkService.cellGroup.longitude);
+    const coords = new google.maps.LatLng(this.creating.cellGroup.latitude, this.creating.cellGroup.longitude);
     const mapOptions: google.maps.MapOptions = {
       center: coords,
       zoom: 19,
@@ -42,8 +40,8 @@ export class LocationRefinePage implements OnInit {
     });
 
     this.map.addListener('click', $event => {
-      this.carparkService.cellGroup.lantitute = $event.latLng.lat();
-      this.carparkService.cellGroup.longitude = $event.latLng.lng();
+      this.creating.cellGroup.latitude = $event.latLng.lat();
+      this.creating.cellGroup.longitude = $event.latLng.lng();
       marker.setCenter($event.latLng);
     });
   }

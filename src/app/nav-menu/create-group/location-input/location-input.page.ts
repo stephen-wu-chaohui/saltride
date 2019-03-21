@@ -4,7 +4,7 @@ import { NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup , Validators , FormControl } from '@angular/forms';
 import {  } from 'google-maps';
 import { Coordinate, LocationService } from 'src/app/services/location.service';
-import { Church } from 'src/app/services/church.service';
+import { Salt } from 'src/app/services/salt.service';
 
 @Component({
   selector: 'app-location-input',
@@ -12,14 +12,11 @@ import { Church } from 'src/app/services/church.service';
   styleUrls: ['./location-input.page.scss'],
 })
 export class LocationInputPage implements OnInit {
-  carpark: Church.CellGroup;
   center: Coordinate;
   public searchControl: FormControl;
   @ViewChild('search') public searchElementRef: ElementRef;
 
-  constructor(carparkService: Creating, public nav: NavController, location: LocationService,
-    private ngZone: NgZone) {
-      this.carpark = carparkService.cellGroup;
+  constructor(public creating: Creating, public nav: NavController, location: LocationService, private ngZone: NgZone) {
       this.center = location.currentLocation;
     }
 
@@ -35,11 +32,11 @@ export class LocationInputPage implements OnInit {
           console.log(place);
           // verify result
           if (place.geometry) {
-              this.carpark.address = place.formatted_address;
-              this.carpark.lantitute = place.geometry.location.lat();
-              this.carpark.longitude = place.geometry.location.lng();
+              this.creating.cellGroup.address = place.formatted_address;
+              this.creating.cellGroup.latitude = place.geometry.location.lat();
+              this.creating.cellGroup.longitude = place.geometry.location.lng();
           } else {
-            this.carpark.address = '';
+            this.creating.cellGroup.address = '';
           }
         });
       });

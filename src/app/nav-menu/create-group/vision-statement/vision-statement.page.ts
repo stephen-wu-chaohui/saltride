@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Creating } from 'src/app/services/creating.service';
 import { NavController } from '@ionic/angular';
-import { Church } from 'src/app/services/church.service';
+import { Salt } from 'src/app/services/salt.service';
 
 @Component({
   selector: 'app-vision-statement',
@@ -9,7 +9,7 @@ import { Church } from 'src/app/services/church.service';
   styleUrls: ['./vision-statement.page.scss'],
 })
 export class VisionStatementPage implements OnInit {
-	cellGroup: Church.CellGroup;
+	cellGroup: Salt.CellGroup;
 
   constructor(public creating: Creating, public nav: NavController) {
 		this.cellGroup = creating.cellGroup;

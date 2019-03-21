@@ -8,28 +8,18 @@
 </ion-header>
 
 <ion-content padding>
-		<div class="formControl" [ngStyle]="emailErrors && {'color': 'red'}">
-			<ion-input type="email" [(ngModel)]="account.email"	name="email" placeholder="Email" (focus)="clearErrors()" autofocus required></ion-input>
-			<div *ngIf="emailErrors" class="error">{{emailErrors}}</div>
+		<div class="input" [ngStyle]="nameErrors && {'color': 'red'}">
+			<ion-input type="name" [(ngModel)]="name"	name="name" placeholder="Your name" (focus)="clearErrors()" autofocus required></ion-input>
+			<div *ngIf="nameErrors" class="error">{{nameErrors}}</div>
 		</div>
-		<div class="formControl" [ngStyle]="passwordErrors && {'color': 'red'}">
-			<ion-input type="password" [(ngModel)]="account.password"	name="password" placeholder="Password" (focus)="clearErrors()" required minlength="8"></ion-input>
-			<div *ngIf="passwordErrors" class="error">{{passwordErrors}}</div>
-		</div>
-		<div class="formControl" [ngStyle]="retypedPasswordErrors && {'color': 'red'}">
-			<ion-input type="password" [(ngModel)]="retypedPassword"	name="password" placeholder="Repeat Password" (focus)="clearErrors()" required minlength="8"></ion-input>
-			<div *ngIf="retypedPasswordErrors" class="error">{{retypedPasswordErrors}}</div>
+		<div class="input" [ngStyle]="phoneNumberErrors && {'color': 'red'}">
+			<ion-input type="phonenumber" [(ngModel)]="phoneNumber"	name="phonenumber" placeholder="Phone number" (focus)="clearErrors()" required minlength="8"></ion-input>
+			<div *ngIf="phoneNumberErrors" class="error">{{phoneNumberErrors}}</div>
 		</div>
 		<br>
 		<br>
 		<br>
-		<ion-button size="large" [disabled]="!account.email" color="primary" expand="block" fill="solid" (click)="onSubmit()">
-			<strong>Next</strong>
+		<ion-button size="large" color="primary" expand="block" fill="solid" (click)="onSubmit()">
+			<strong>OK</strong>
 		</ion-button>
-
-	<div>Already a member?</div>
-	<ion-button color="primary" expand="block" fill="clear" (click)="nav.navigateRoot('/account/login')">
-		<strong>Login</strong>
-	</ion-button>
-
 </ion-content>

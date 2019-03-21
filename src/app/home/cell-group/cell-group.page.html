@@ -26,21 +26,20 @@
 				</ion-item>
 
 				<div padding text-wrap *ngIf="expanding">
-					<ion-text padding strong color="dark">{{cellGroup?.parkingInstructions}}</ion-text>
+					<ion-text padding strong color="dark">{{cellGroup?.missionStatement}}</ion-text>
 				</div>
 
-				<ion-button strong color="primary" expand="block" fill="solid" (click)="joinGroup()">
+				<ion-button strong expand="block" fill="clear" (click)="playVideo()">
+					<ion-ripple-effect></ion-ripple-effect>
+					<ion-icon name="play-circle" color="primary"></ion-icon> Get more info
+				</ion-button>
+				<ion-button strong color="primary" expand="block" fill="solid" (click)="joinGroup()" [disabled]="participate">
 						<ion-ripple-effect></ion-ripple-effect>
 						<ion-icon name="add-circle" color="success"></ion-icon>Join this group
-				</ion-button>
-				<ion-button strong expand="block" fill="clear" (click)="playVideo()">
-						<ion-ripple-effect></ion-ripple-effect>
-						<ion-icon name="play-circle" color="primary"></ion-icon> Get more info
 				</ion-button>
 			</ion-card-content>
 		</ion-card>
 </ion-content>
-
 
 <ion-footer>
   <ion-card>

@@ -17,12 +17,13 @@
 
 
 <ion-content>
+
 	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.email; then validIcon else invalidIcon">
+		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.givenName; then validIcon else invalidIcon">
 		</ion-buttons>
 		<div class="content">
-			<ion-label color="medium">Email:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.email"></ion-input>
+			<ion-label color="medium">Given name:	</ion-label>
+			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.givenName"></ion-input>
 		</div>
 		<ion-buttons slot="end">
 			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
@@ -30,11 +31,11 @@
 	</ion-item>
 
 	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.firstName; then validIcon else invalidIcon">
+		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.familyName; then validIcon else invalidIcon">
 		</ion-buttons>
 		<div class="content">
-			<ion-label color="medium">First name:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.firstName"></ion-input>
+			<ion-label color="medium">Family name:	</ion-label>
+			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.familyName"></ion-input>
 		</div>
 		<ion-buttons slot="end">
 			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
@@ -42,11 +43,11 @@
 	</ion-item>
 
 	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.lastName; then validIcon else invalidIcon">
+		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.preferName; then validIcon else invalidIcon">
 		</ion-buttons>
 		<div class="content">
-			<ion-label color="medium">Last name:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.lastName"></ion-input>
+			<ion-label color="medium">Prefer name:	</ion-label>
+			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.preferName"></ion-input>
 		</div>
 		<ion-buttons slot="end">
 			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
@@ -54,47 +55,11 @@
 	</ion-item>
 
 	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.phoneNumber; then validIcon else invalidIcon">
+		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.phoneNumber; then validIcon else invalidIcon">
 		</ion-buttons>
 		<div class="content">
 			<ion-label color="medium">Phone number:	</ion-label>
 			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.phoneNumber"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
-
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.plateNumbers; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Your vehicles:</ion-label>
-			<ion-label class="field">{{accountService.currentUser.plateNumbers}}</ion-label>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
-
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.creditCards; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Credit Card</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.creditCards"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
-
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser.password; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Password</ion-label>
-			<ion-input class="field" type="password" readonly [(ngModel)]="accountService.currentUser.password"></ion-input>
 		</div>
 		<ion-buttons slot="end">
 			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>

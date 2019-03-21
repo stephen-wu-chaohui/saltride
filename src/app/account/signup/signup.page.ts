@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Account, AccountService } from 'src/app/services/account.service';
+import { AccountService } from 'src/app/services/account.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -8,40 +8,38 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  account: Account;
+  name: string;
+  phoneNumber: string;
+  nameErrors = '';
+  phoneNumberErrors = '';
+  smsErrors = '';
 
-  retypedPassword = '';
-  emailErrors = '';
-  passwordErrors = '';
-  retypedPasswordErrors = '';
-
-  constructor(accountService: AccountService, public nav: NavController) {
-    this.account = accountService.accountForSignup;
+  constructor(private accountService: AccountService, public nav: NavController) {
   }
 
   ngOnInit() {
   }
 
   clearErrors() {
-    this.emailErrors = '';
-    this.passwordErrors = '';
-    this.retypedPasswordErrors = '';
+    this.nameErrors = '';
+    this.phoneNumberErrors = '';
   }
 
   onSubmit() {
-    const re = /[^@]+@[^\.]+\..+/g;
-    if (this.account.email.length === 0) {
-      this.emailErrors = 'Email is required';
-    } else if (!re.test(String(this.account.email).toLowerCase())) {
-      this.emailErrors = 'Email format is not valid';
-    } else if (this.account.password.length === 0) {
-        this.passwordErrors = 'Password is required';
-    } else if (this.account.password !== this.retypedPassword) {
-      this.passwordErrors = 'Passwords do not match';
-      this.retypedPasswordErrors = 'Passwords do not match';
+    if (!this.name) {
+      this.nameErrors = 'Name is required';
+    } else if (!this.phoneNumber) {
+        this.phoneNumberErrors = 'Phone number is required';
     } else {
-      this.nav.navigateForward('/account/signup-finish');
+      this.accountService.signUp(this.name, this.phoneNumber).subscribe(result => {
+        this.nav.navigateRoot('/home');
+      });
     }
+  }
+
+  onVerify() {
+    this.accountService.getCode(this.phoneNumber).subscribe(result => {
+    });
   }
 
 }

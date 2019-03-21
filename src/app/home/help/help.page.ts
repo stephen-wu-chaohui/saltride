@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Church } from 'src/app/services/church.service';
-import { runInThisContext } from 'vm';
+import { Salt } from 'src/app/services/salt.service';
 
 @Component({
   selector: 'app-help',
@@ -10,7 +9,7 @@ import { runInThisContext } from 'vm';
 })
 export class HelpPage implements OnInit {
 
-  constructor(public nav: NavController, public churchService: Church.Service) {
+  constructor(public nav: NavController, public churchService: Salt.Service) {
   }
 
   ngOnInit() {

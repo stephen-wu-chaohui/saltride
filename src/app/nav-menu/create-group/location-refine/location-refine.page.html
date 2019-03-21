@@ -14,7 +14,7 @@
 
 <ion-footer>
 		<ion-toolbar>
-		<ng-container *ngIf="carpark.address; then validIcon else invalidIcon"></ng-container>
+		<ng-container *ngIf="creating.cellGroup.address; then validIcon else invalidIcon"></ng-container>
 			<ion-buttons slot="end" style="display: inline-flex;" color="primary">
 				<ion-label color="primary">Next</ion-label>
 				<ion-icon text="Next" name="arrow-round-forward" style="font-size: 2.25rem;" color="primary" (click)="nav.back(); nav.back();"></ion-icon>

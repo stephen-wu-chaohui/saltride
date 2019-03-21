@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Church as Church } from 'src/app/services/church.service';
+import { Salt } from 'src/app/services/salt.service';
 import { NavController, ModalController } from '@ionic/angular';
 import { CellGroupPage } from '../cell-group/cell-group.page';
 import { OverlayEventDetail } from '@ionic/core';
@@ -11,7 +11,7 @@ import { OverlayEventDetail } from '@ionic/core';
 })
 export class CellMarkerComponent implements OnInit {
   @Input() map: google.maps.Map;
-  @Input() cellGroup: Church.CellGroup;
+  @Input() cellGroup: Salt.CellGroup;
   @Input() color = 'dodgerblue';
   @Input() scale = 13;
   @Input() fillOpacity = 1;
@@ -22,11 +22,12 @@ export class CellMarkerComponent implements OnInit {
    ) { }
 
   ngOnInit() {
+    const label = (this.cellGroup.name || this.cellGroup.missionStatement || 'G') [0];
     new google.maps.Marker({
       map: this.map,
-      position: new google.maps.LatLng(this.cellGroup.lantitute, this.cellGroup.longitude),
+      position: new google.maps.LatLng(this.cellGroup.latitude, this.cellGroup.longitude),
       clickable: true,
-      label: {text: this.cellGroup.availableBays.toString(), color: 'white'},
+      label: { text: label, color: 'white' },
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         fillOpacity: this.fillOpacity,

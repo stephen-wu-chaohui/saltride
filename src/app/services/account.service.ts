@@ -6,114 +6,70 @@ import { Observable, of, from } from 'rxjs';
 import { map, catchError, flatMap } from 'rxjs/operators';
 
 import { AppDataService } from './app-data.service';
-import { Church } from './church.service';
-
-export class Account {
-  id?: number;
-
-  email: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  password: string;
-
-  plateNumbers?: string;
-  creditCards?: string;
-}
+import { Salt } from './salt.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  accountForSignup = new Account();
+  currentUser: Salt.Disciple;
 
   savedUserName: string;
-  savedPassword: string;
-  private currentAccount: Account;
+  savedPhoneNumber: string;
+  savedCode: string;
 
   private serviceEndPoint = '';
 
-  constructor(private appConfig: AppDataService, private httpClient: HttpClient,
-    private church: Church.Service, private storage: Storage) {
-    this.serviceEndPoint = `${this.appConfig.apiURL}/Accounts`;
+  constructor(private appConfig: AppDataService, private httpClient: HttpClient, private storage: Storage) {
+    this.serviceEndPoint = `${this.appConfig.apiURL}/Disciples`;
+    this.loadCurrentUser();
   }
 
-  loadCurrentUser(): Observable<boolean> {
-    if (this.currentAccount) {
-      return of(true);
-    }
-
-    return from(Promise.all([
-        this.storage.get('Parkable.savedUserName'),
-        this.storage.get('Parkable.savedPassword')]))
-      .pipe(flatMap(data => {
+  private loadCurrentUser() {
+    Promise.all([
+        this.storage.get('Salt.savedUserName'),
+        this.storage.get('Salt.savedPhoneNumber')])
+      .then(data => {
         this.savedUserName = data[0];
-        this.savedPassword = data[1];
-        if (this.savedUserName && this.savedUserName.length > 0) {
-          return this.login(this.savedUserName, this.savedPassword);
-        } else {
-          return of(false);
+        this.savedPhoneNumber = data[1];
+        if (this.savedUserName) {
+          return this.signUp(this.savedUserName, this.savedPhoneNumber).subscribe();
         }
-      }));
+      });
   }
 
-  get currentUser(): Account { return this.currentAccount; }
-
-  set currentUser(account: Account) {
-    this.currentAccount = account;
-  }
 
   clearSaving() {
-    this.storage.remove('Parkable.savedUserName');
-    this.storage.remove('Parkable.savedPassword');
+    this.storage.remove('Salt.savedUserName');
+    this.storage.remove('Salt.savedPhoneNumber');
     this.currentUser = null;
     this.savedUserName = '';
   }
 
   saveIdentity() {
-    this.storage.set('Parkable.savedUserName', this.currentUser.email);
-    this.storage.set('Parkable.savedPassword', this.currentUser.password);
+    this.storage.set('Salt.savedUserName', this.currentUser.preferName);
+    this.storage.set('Salt.savedPhoneNumber', this.currentUser.phoneNumber);
   }
 
-  signUp(): Observable<string> {
+  signUp(preferName, phoneNumber): Observable<Salt.Disciple> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', timeout: '2000' })
     };
 
-    return this.httpClient.post<any>(`${this.serviceEndPoint}`, this.accountForSignup, httpOptions).pipe(
+    return this.httpClient.post<any>(this.serviceEndPoint, { preferName, phoneNumber }, httpOptions).pipe(
       map(user => {
-          this.currentUser = user;
-          this.savedUserName = this.currentUser.email;
-          this.saveIdentity();
-          return 'OK';
-        },
-        catchError(error => error.toString())
-    ));
+        this.currentUser = user;
+        this.savedUserName = this.currentUser.preferName;
+        this.savedPhoneNumber = this.currentUser.phoneNumber;
+        this.saveIdentity();
+        return user;
+      }),
+    );
   }
 
-  login(userName, password): Observable<boolean> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', timeout: '2000' }),
-      params: { userName: userName, password: password }
-    };
-
-    return this.httpClient.get<any>(`${this.serviceEndPoint}`, httpOptions).pipe(
-      map(user => {
-          this.currentUser = user.account;
-          this.savedUserName = this.currentUser.email;
-          this.saveIdentity();
-          return true;
-        },
-        () => {
-          return false;
-        }
-    ));
-  }
-
-  logout() {
-    if (this.currentAccount) {
-      this.clearSaving();
-    }
+  logOut() {
+    this.clearSaving();
+    this.currentUser = null;
   }
 
   update(): Observable<string> {
@@ -121,7 +77,20 @@ export class AccountService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', timeout: '2000' }),
     };
 
-    return this.httpClient.put<Account>(`${this.serviceEndPoint}/${this.currentUser.id}`, this.currentUser, httpOptions).pipe(
+    return this.httpClient.put(`${this.serviceEndPoint}/${this.currentUser.id}`, this.currentUser, httpOptions).pipe(
+      map(() => {
+          return 'OK';
+        },
+        catchError(error => error.toString())
+    ));
+  }
+
+  getCode(phoneNumber): Observable<string> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', timeout: '2000' }),
+    };
+
+    return this.httpClient.post(this.serviceEndPoint, { phoneNumber }, httpOptions).pipe(
       map(() => {
           return 'OK';
         },

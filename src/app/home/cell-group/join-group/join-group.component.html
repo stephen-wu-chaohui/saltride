@@ -24,6 +24,7 @@
 				</div>
 			<br/>
 			<br/>
+			<br/>
 				<ion-toolbar>
 					<ion-checkbox slot="start" [(ngModel)]="needRide"></ion-checkbox>
 					<ion-label padding slot="start" color="primary">I need a ride to there</ion-label>
@@ -42,7 +43,7 @@
 						</ion-button>
 				</ion-col>
 				<ion-col col-6>
-						<ion-button color="primary" expand="block" fill="outline" shape="round" (click)="modalController.dismiss()">
+						<ion-button color="primary" expand="block" fill="outline" shape="round" (click)="ClickOK()">
 								<ion-icon name="checkmark-circle"></ion-icon> OK
 						</ion-button>
 				</ion-col>

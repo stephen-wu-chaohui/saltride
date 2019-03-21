@@ -1,39 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Church as Church } from '../services/church.service';
+import { Salt } from '../services/salt.service';
 import { Coordinate, LocationService } from '../services/location.service';
 import {  } from 'google-maps';
 import { AccountService } from '../services/account.service';
 import { NavController } from '@ionic/angular';
 
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-map-page',
+  templateUrl: 'map.page.html',
+  styleUrls: ['map.page.scss'],
 })
 
 
-export class HomePage implements OnInit {
+export class MapPage {
   center: Coordinate;
-  pendingOrder: Church.Parking;
 
-  makerLabel(cellGroup: Church.CellGroup) {
-    return cellGroup.availableBays.toString();
+  makerLabel(cellGroup: Salt.CellGroup) {
+    return cellGroup.capacity.toString();
   }
 
   constructor(
     public nav: NavController,
     public accountService: AccountService,
-    public church: Church.Service,
+    public church: Salt.Service,
     public locationService: LocationService,
   ) {
     this.locationService.relocate();
-  }
-
-  ngOnInit() {
-    this.accountService.loadCurrentUser().subscribe();
   }
 
   clickLogo() {
