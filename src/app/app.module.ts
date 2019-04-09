@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -20,10 +21,11 @@ import { IonicStorageModule } from '@ionic/storage';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-		BrowserModule,
-		HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
-		IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot(),
     CommonModule,
     AppRoutingModule,
     FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

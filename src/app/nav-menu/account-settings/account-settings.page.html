@@ -8,64 +8,36 @@
 </ion-header>
 
 <ng-template #validIcon>
-	<ion-icon style="padding: 5px;" name="checkmark-circle" size="large" color="success"></ion-icon>
+	<ion-icon slot="start" style="padding: 5px;" name="checkmark-circle" size="large" color="success"></ion-icon>
 </ng-template>
 
 <ng-template #invalidIcon>
-	<ion-icon style="color: lightgray; padding: 5px;" name="close-circle-outline"size="large"></ion-icon>
+	<ion-icon slot="start" style="color: lightgray; padding: 5px;" name="close-circle-outline"size="large"></ion-icon>
 </ng-template>
 
 
-<ion-content>
+<ion-content padding>
+	<form [formGroup]="profileForm">
+		<ion-item>
+			<ng-container *ngIf="!givenName?.value; then invalidIcon else validIcon"></ng-container>
+			<ion-input #givenName class="field" type="text" formControlName="givenName" placeholder="Given name"></ion-input>
+		</ion-item>
 
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.givenName; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Given name:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.givenName"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
+		<ion-item>
+				<ng-container *ngIf="!familyName?.value; then invalidIcon else validIcon"></ng-container>
+				<ion-input #familyName class="field" type="text" formControlName="familyName" placeholder="Family name"></ion-input>
+		</ion-item>
 
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.familyName; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Family name:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.familyName"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
+		<ion-item>
+				<ng-container *ngIf="!preferName?.value; then invalidIcon else validIcon"></ng-container>
+				<ion-input #preferName class="field" type="text" formControlName="preferName" placeholder="Prefer name"></ion-input>
+		</ion-item>
 
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.preferName; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Prefer name:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.preferName"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
-
-	<ion-item>
-		<ion-buttons slot="start"  *ngIf="accountService.currentUser?.phoneNumber; then validIcon else invalidIcon">
-		</ion-buttons>
-		<div class="content">
-			<ion-label color="medium">Phone number:	</ion-label>
-			<ion-input class="field" type="text" readonly [(ngModel)]="accountService.currentUser.phoneNumber"></ion-input>
-		</div>
-		<ion-buttons slot="end">
-			<ion-icon name="arrow-round-forward" color="primary" size="large"></ion-icon>
-		</ion-buttons>
-	</ion-item>
-
+		<ion-item>
+				<ng-container *ngIf="!email?.value; then invalidIcon else validIcon"></ng-container>
+				<ion-input #email class="field" type="email" formControlName="email" placeholder="Email"></ion-input>
+		</ion-item>
+	</form>
 </ion-content>
 
 <ion-toolbar>
@@ -73,12 +45,12 @@
 		<ion-row>
 			<ion-col col-6>
 				<ion-button color="primary" expand="block" fill="outline" shape="round">
-					<ion-ripple-effect></ion-ripple-effect>Teams of Service
+					<ion-ripple-effect></ion-ripple-effect>Save
 				</ion-button>
 			</ion-col>
 			<ion-col col-6>
 				<ion-button color="primary" expand="block" fill="outline" shape="round" (click)="logout()">
-					<ion-ripple-effect></ion-ripple-effect>Log Out
+					<ion-ripple-effect></ion-ripple-effect>Clear
 				</ion-button>
 			</ion-col>
 		</ion-row>
