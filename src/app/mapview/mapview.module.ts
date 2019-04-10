@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { MapViewPage } from './mapview.page';
 import { MapComponent } from './map/map.component';
-import { HelpPage } from './help/help.page';
 import { CellMarkerComponent } from './cell-marker/cell-marker.component';
 import { CellGroupPage } from './cell-group/cell-group.page';
 import { JoinGroupComponent } from './cell-group/join-group/join-group.component';
@@ -20,12 +19,10 @@ import { ChurchMarkerComponent } from './church-marker/church-marker.component';
     IonicModule,
     RouterModule.forChild([
       { path: '', component: MapViewPage },
-      { path: 'help', component: HelpPage },
     ]),
   ],
   declarations: [
     MapViewPage,
-    HelpPage,
     MapComponent,
     CellMarkerComponent,
     ChurchMarkerComponent,

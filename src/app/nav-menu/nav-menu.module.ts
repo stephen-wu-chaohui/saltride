@@ -8,7 +8,8 @@ import { NavMenu } from './nav-menu';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: '../mapview/mapview.module#MapPageModule' },
+  { path: 'home', loadChildren: '../help/help.module#HelpPageModule' },
+  { path: 'mapview', loadChildren: '../mapview/mapview.module#MapPageModule' },
   { path: 'account', loadChildren: '../account/welcome.module#WelcomePageModule' },
   { path: 'account-settings', loadChildren: '../nav-menu/account-settings/account-settings.module#AccountSettingsPageModule' },
   { path: 'map-filter', loadChildren: '../nav-menu/map-filter/map-filter.module#MapFilterPageModule' },

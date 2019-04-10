@@ -33,7 +33,7 @@ export class ChurchMarkerComponent implements OnInit {
         scale: this.scale
       },
     }).addListener('click', () => {
-      this.nav.navigateForward('/home/help');
+      this.nav.navigateRoot('/home');
     });
   }
 
