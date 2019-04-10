@@ -4,9 +4,9 @@ import { NavMenuModule } from './nav-menu/nav-menu.module';
 
 @NgModule({
   imports: [
-		RouterModule.forRoot([]),
-		NavMenuModule
-	],
+    RouterModule.forRoot([]),
+    NavMenuModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
