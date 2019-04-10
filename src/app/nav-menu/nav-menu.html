@@ -1,0 +1,21 @@
+<ion-menu side="start" contentId="contentMain" swipe-gesture="true">
+	<ion-header padding>
+		<ion-img src="assets/logoBanner.png"></ion-img>
+	</ion-header>
+	<ion-content>
+		<ng-container *ngFor="let group of menuGroups">
+			<ion-item>
+					{{group.label}}
+			</ion-item>
+			<ion-menu-toggle auto-hide="false" *ngFor="let menuItem of group.menuItems">
+				<ion-item (click)="nav.navigateForward(menuItem.url)">
+					<ion-icon slot="start" [name]="menuItem.icon"></ion-icon>
+					<ion-label [color]="menuItem.disabled ? 'medium' : 'primary'">
+						{{menuItem.label}}
+					</ion-label>
+					<ion-icon slot="end" name="arrow-forward"></ion-icon>
+				</ion-item>
+			</ion-menu-toggle>
+		</ng-container>
+	</ion-content>
+</ion-menu>

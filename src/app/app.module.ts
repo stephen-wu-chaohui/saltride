@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
+import { NavMenuModule } from './nav-menu/nav-menu.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,7 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
     CommonModule,
     AppRoutingModule,
     FormsModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-
+    NavMenuModule,
   ],
 
   providers: [
