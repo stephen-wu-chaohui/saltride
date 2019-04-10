@@ -8,12 +8,12 @@ import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-map-page',
-  templateUrl: 'map.page.html',
-  styleUrls: ['map.page.scss'],
+  templateUrl: 'mapview.page.html',
+  styleUrls: ['mapview.page.scss'],
 })
 
 
-export class MapPage {
+export class MapViewPage {
   center: Coordinate;
 
   makerLabel(cellGroup: Salt.CellGroup) {
