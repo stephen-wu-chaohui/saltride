@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: '../help/help.module#HelpPageModule' },
   { path: 'news', loadChildren: '../news/news.module#NewsPageModule' },
-  { path: 'sermons', loadChildren: '../sermons/sermons.module#SermonsPageModule' },
+  { path: 'sermons/:id', loadChildren: '../sermons/sermons.module#SermonsPageModule' },
   { path: 'mapview', loadChildren: '../mapview/mapview.module#MapPageModule' },
   { path: 'account', loadChildren: '../account/welcome.module#WelcomePageModule' },
   { path: 'account-settings', loadChildren: '../nav-menu/account-settings/account-settings.module#AccountSettingsPageModule' },
