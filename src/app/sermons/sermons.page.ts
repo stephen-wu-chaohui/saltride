@@ -27,7 +27,12 @@ export class SermonsPage implements OnInit {
       this.nav.navigateForward(`/sermons/${vid}`);
   }
 
-  goBack() {
+  goToVideoPlay(vid) {
+		// It doesn't work so far
+		// this.nav.navigateForward(`/videoplay/${vid}`);
+	}
+
+	goBack() {
     this.nav.back();
   }
 }

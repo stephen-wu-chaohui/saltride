@@ -86,4 +86,6 @@
     <plugin name="cordova-plugin-insomnia" spec="^4.3.0" />
     <plugin name="cordova-plugin-navigationbar" spec="^1.0.31" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-youtube-video-player" spec="2.3.0" />
+		<preference name="YouTubeDataApiKey" value="AIzaSyD-368Ha8Sl7YQ8jju_R_ORXYqkuYHVH74" />
 </widget>
