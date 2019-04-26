@@ -1,0 +1,58 @@
+<ion-header>
+		<ion-toolbar>
+			<ion-buttons slot="start">
+				<ion-back-button defaultHref="/home"></ion-back-button>
+			</ion-buttons>
+			<ion-title>Account</ion-title>
+		</ion-toolbar>
+	</ion-header>
+
+	<ng-template #validIcon>
+		<ion-icon slot="start" style="padding: 5px;" name="checkmark-circle" size="large" color="success"></ion-icon>
+	</ng-template>
+
+	<ng-template #invalidIcon>
+		<ion-icon slot="start" style="color: lightgray; padding: 5px;" name="close-circle-outline"size="large"></ion-icon>
+	</ng-template>
+
+
+	<ion-content padding>
+		<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+			<ion-item>
+				<ng-container *ngIf="!givenName?.value; then invalidIcon else validIcon"></ng-container>
+				<ion-input #givenName class="field" type="text" formControlName="givenName" placeholder="Given name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+					<ng-container *ngIf="!familyName?.value; then invalidIcon else validIcon"></ng-container>
+					<ion-input #familyName class="field" type="text" formControlName="familyName" placeholder="Family name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+					<ng-container *ngIf="!preferName?.value; then invalidIcon else validIcon"></ng-container>
+					<ion-input #preferName class="field" type="text" formControlName="preferName" placeholder="Prefer name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+					<ng-container *ngIf="!phoneNumber?.value; then invalidIcon else validIcon"></ng-container>
+					<ion-input #phoneNumber class="field" type="text" formControlName="phoneNumber" placeholder="Phone number"></ion-input>
+			</ion-item>
+		</form>
+	</ion-content>
+
+	<ion-toolbar>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-6>
+					<ion-button color="primary" expand="block" fill="outline" shape="round">
+						<ion-ripple-effect></ion-ripple-effect>Teams of Service
+					</ion-button>
+				</ion-col>
+				<ion-col col-6>
+					<ion-button color="primary" expand="block" fill="outline" shape="round" (click)="logout()">
+						<ion-ripple-effect></ion-ripple-effect>Log Out
+					</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar>
